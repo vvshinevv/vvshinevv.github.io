@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-12T19:20:43+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">HongDev.</title><subtitle>Share Note</subtitle><entry><title type="html">Generic이란?</title><link href="http://localhost:4000/Generic1/" rel="alternate" type="text/html" title="Generic이란?" /><published>2019-01-05T00:00:00+09:00</published><updated>2019-01-05T00:00:00+09:00</updated><id>http://localhost:4000/Generic1</id><content type="html" xml:base="http://localhost:4000/Generic1/">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-12T19:45:42+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">HongDev.</title><subtitle>Share Note</subtitle><entry><title type="html">Generic이란?</title><link href="http://localhost:4000/Generic1/" rel="alternate" type="text/html" title="Generic이란?" /><published>2019-01-05T00:00:00+09:00</published><updated>2019-01-05T00:00:00+09:00</updated><id>http://localhost:4000/Generic1</id><content type="html" xml:base="http://localhost:4000/Generic1/">&lt;blockquote&gt;
   &lt;p&gt;제네릭을 쓰면서도 맞게 쓰는 건지 몰라서 찝찝한 마음에 업무를 했었는데 사내 이펙티브 자바 스터디 중 발표할 수 있는 기회가 생겨 정리를 해봤다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -38,7 +38,9 @@ Box 제네릭 클래스와 그 것을 상속 받는 SteelBox 제네릭 클래스
 
 &lt;p&gt;&lt;img src=&quot;/images/2019-01-05/1.png&quot; alt=&quot;_config.yml&quot; /&gt; &lt;img src=&quot;/images/2019-01-05/2.png&quot; alt=&quot;_config.yml&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;그림으로 보면 직관적으로 알 수 있듯이, SteelBox는 Box를 상속받고, Integer를 파라미터로 갖는 SteelBox 제네릭 클래스는 당연히 Integer를 파라미터로 갖는 Box 제네릭 클래스를 상속받을 수 있다. 그러나 String을 파라미터로 갖는 Box 제네릭 타입은 상속받을 수 없다. &lt;strong&gt;&lt;em&gt;왜냐하면 Box&amp;lt;String&amp;gt; 파라미터화 타입은 하나의 독립된 타입이고, SteelBox&amp;lt;Integer&amp;gt; 파리미터화 타입 또한 하나의 독립된 타입이기 때문이다.&lt;/em&gt;&lt;/strong&gt; 그림으로 봤을 때는 쉽게 이해할 수 있지만 기억하지 않으면 쉽게 헤깔릴 수 있는 내용이다.
+&lt;p&gt;그림으로 보면 직관적으로 알 수 있듯이, SteelBox는 Box를 상속받고, Integer를 파라미터로 갖는 SteelBox 제네릭 클래스는 당연히 Integer를 파라미터로 갖는 Box 제네릭 클래스를 상속받을 수 있다. 그러나 String을 파라미터로 갖는 Box 제네릭 타입은 상속받을 수 없다.
+&lt;br /&gt;&lt;br /&gt;
+ &lt;strong&gt;&lt;em&gt;왜냐하면 Box&amp;lt;String&amp;gt; 파라미터화 타입은 하나의 독립된 타입이고, SteelBox&amp;lt;Integer&amp;gt; 파리미터화 타입 또한 하나의 독립된 타입이기 때문이다.&lt;/em&gt;&lt;/strong&gt; 그림으로 봤을 때는 쉽게 이해할 수 있지만 기억하지 않으면 쉽게 헤깔릴 수 있는 내용이다.
 &lt;br /&gt;&lt;br /&gt;
 나의 경우 외우기 쉽게 두 가지 조건이 맞으면 상속이 가능하다라고 암기(?)를 하고 있는데, 첫 번째는 당연히 클래스는 상속 관계에 있어야 하고 두 번째는 파라미터 타입이 일치해야 한다는 것이다. 그래야 제네릭 클래스 간에 상속 관계가 형성된다고 머릿 속에 넣었다. 아래 예제 샘플을 확인해 보고 익숙해 지자.
 &lt;script src=&quot;https://gist.github.com/vvshinevv/a56c1dc2c05e0ee468a02b063977d1a1.js&quot;&gt;&lt;/script&gt;
