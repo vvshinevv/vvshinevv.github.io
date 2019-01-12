@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-12T19:20:43+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">HongDev.</title><subtitle>Share Note</subtitle><entry><title type="html">Generic이란?</title><link href="http://localhost:4000/Generic1/" rel="alternate" type="text/html" title="Generic이란?" /><published>2019-01-05T00:00:00+09:00</published><updated>2019-01-05T00:00:00+09:00</updated><id>http://localhost:4000/Generic1</id><content type="html" xml:base="http://localhost:4000/Generic1/">&lt;blockquote&gt;
+  &lt;p&gt;제네릭을 쓰면서도 맞게 쓰는 건지 몰라서 찝찝한 마음에 업무를 했었는데 사내 이펙티브 자바 스터디 중 발표할 수 있는 기회가 생겨 정리를 해봤다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;item-26-로-타입은-사용하지-말라&quot;&gt;[ITEM 26] 로 타입은 사용하지 말라&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;로 타입(Raw Type)&lt;/strong&gt; : 제네릭 타입에서 Type Parameter를 전혀 사용하지 않을 때를 말한다. ex) List&amp;lt;E&amp;gt; 의 raw type은 List 이다.
+&lt;br /&gt;&lt;br /&gt;
+아래 Raw Type의 예제를 보자.
+&lt;script src=&quot;https://gist.github.com/vvshinevv/316f4f0e0366dfad615cdc086d05f814.js&quot;&gt;&lt;/script&gt;
+위 예제들은 공통적으로 컴파일은 되지만 Raw Type인 리스트를 사용하여 경고가 발생한다. 그리고 이 코드를 실행하면 ClassCastException이 발생한다. 오류는 컴파일할 때 발견하는 것이 좋다. 이번 글은 제네릭에 대해서 공부했던 내용과 제네릭을 사용하여 컴파일 시에 오류를 잡아 제네릭이 주는 장점을 공유하고자 한다.&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;제네릭에-들어가기-앞서&quot;&gt;제네릭에 들어가기 앞서&lt;/h5&gt;
+&lt;hr class=&quot;post&quot; /&gt;
+
+&lt;p&gt;그렇다면 절대 써서는 안되는 raw type을 애초에 만들어 놓을 걸까? 그 이유는 java5 이전과의 호환성 때문이다. Raw Type을 사용하는 메서드에 Type Parameter의 인스턴스를 넘겨도 (물론 그 반대도) 동작해야만 했던 것이다. 자바를 디자인한 사람은 이전 버전과의 호환성을 위해서 제네릭 구현에서는 소거(Erasure) 방식을 사용하기로 했다. &lt;br /&gt;&lt;br /&gt;
+그럼 List 같은 Raw Type은 사용해서는 안 될까? 결론부터 말하면 되도록이면 사용하지 않는 편이 좋다. 위 예제를 통해서도 알 수 있듯이 Raw Type은 &lt;em&gt;위험&lt;/em&gt;하기 때문이다. 회사에서 종종 코드를 보다보면 Raw Type으로 코드를 작성한 Collection들을 종종 볼 수 있었다. 인텔리J에서 경고를 뱉어 보는대로 제네릭 타입으로 고치도록 노력하고는 있다.&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;raw-type과-generic&quot;&gt;Raw Type과 Generic&lt;/h5&gt;
+&lt;hr class=&quot;post&quot; /&gt;
+
+&lt;p&gt;List와 List&amp;lt;Object&amp;gt;의 차이는 무엇일까? 간단하게는 List는 제네릭 타입에서 완전히 발을 뺀 것이고, List&amp;lt;Object&amp;gt;는 모든 타입을 허용한다는 의미이다. 여기서 제네릭을 공부하면서 필수적으로 알아야 하는 중요한 개념이 있는데 바로 다음 문장의 의미이다.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;List&amp;lt;String&amp;gt;은 List의 하위 타입이지만, List&amp;lt;Object&amp;gt;의 하위 타입은 아니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;generic과-상속&quot;&gt;Generic과 상속&lt;/h5&gt;
+&lt;hr class=&quot;post&quot; /&gt;
+
+&lt;p&gt;바로 위에 인용구로 적힌 내용을 아래 예제를 통해서 알아보자.
+&lt;script src=&quot;https://gist.github.com/vvshinevv/98dab542a7a2a9dbaecf2dfc7d6415e4.js&quot;&gt;&lt;/script&gt;
+Box 제네릭 클래스와 그 것을 상속 받는 SteelBox 제네릭 클래스가 있다. 그림으로 보면 아래와 같다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2019-01-05/1.png&quot; alt=&quot;_config.yml&quot; /&gt; &lt;img src=&quot;/images/2019-01-05/2.png&quot; alt=&quot;_config.yml&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그림으로 보면 직관적으로 알 수 있듯이, SteelBox는 Box를 상속받고, Integer를 파라미터로 갖는 SteelBox 제네릭 클래스는 당연히 Integer를 파라미터로 갖는 Box 제네릭 클래스를 상속받을 수 있다. 그러나 String을 파라미터로 갖는 Box 제네릭 타입은 상속받을 수 없다. &lt;strong&gt;&lt;em&gt;왜냐하면 Box&amp;lt;String&amp;gt; 파라미터화 타입은 하나의 독립된 타입이고, SteelBox&amp;lt;Integer&amp;gt; 파리미터화 타입 또한 하나의 독립된 타입이기 때문이다.&lt;/em&gt;&lt;/strong&gt; 그림으로 봤을 때는 쉽게 이해할 수 있지만 기억하지 않으면 쉽게 헤깔릴 수 있는 내용이다.
+&lt;br /&gt;&lt;br /&gt;
+나의 경우 외우기 쉽게 두 가지 조건이 맞으면 상속이 가능하다라고 암기(?)를 하고 있는데, 첫 번째는 당연히 클래스는 상속 관계에 있어야 하고 두 번째는 파라미터 타입이 일치해야 한다는 것이다. 그래야 제네릭 클래스 간에 상속 관계가 형성된다고 머릿 속에 넣었다. 아래 예제 샘플을 확인해 보고 익숙해 지자.
+&lt;script src=&quot;https://gist.github.com/vvshinevv/a56c1dc2c05e0ee468a02b063977d1a1.js&quot;&gt;&lt;/script&gt;
+한번 위 내용을 컴파일 해보면 바로 알 수 있겠지만, 위에서 설명한 두 가지 조건을 잘 생각해 가면서 변수에 초기화가 될 수 있는지 생각해보자. 보기에 런타임 에러인 경우는 위에서 설명한 Raw Type을 겨냥한 것임을 눈치 챘을 것이다. (제네릭은 런타임이 절대 발생할 수 없음!)
+&lt;br /&gt;&lt;br /&gt;
+제네릭을 Collections까지 공부하면서 어떻게 보면 상속은 제네릭의 클래스 혹은 제네릭 메소드를 만들고 구성하는데 있어서 가장 중요한 개념인 것 같다. 앞으로도 상속과 관련해서 제네릭을 설명하는 내용이 많다. 확실하게 이해하고 넘어가는게 좋다. 글이 조금 길어진 것 같으니 다음 포스팅으로 내용을 다시 정리하겠다.&lt;/p&gt;</content><author><name></name></author><summary type="html">제네릭을 쓰면서도 맞게 쓰는 건지 몰라서 찝찝한 마음에 업무를 했었는데 사내 이펙티브 자바 스터디 중 발표할 수 있는 기회가 생겨 정리를 해봤다.</summary></entry></feed>
