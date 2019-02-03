@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><3편>Generic이란? – HongDev. – Share Note</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="
+  제한(상한, 하한)된 와일드 카드의 개념에 대한 내용이다. 왜 제한된 와일드 카드를 쓰는지 이해하고, 이를 통해 논리적인 오류까지 잡아낼 수 있는 자바의 힘에 대해 느낄 수 있다.
+
+
+" />
+    <meta property="og:description" content="
+  제한(상한, 하한)된 와일드 카드의 개념에 대한 내용이다. 왜 제한된 와일드 카드를 쓰는지 이해하고, 이를 통해 논리적인 오류까지 잡아낼 수 있는 자바의 힘에 대해 느낄 수 있다.
+
+
+" />
+    
+    <meta name="author" content="HongDev." />
+
+    
+    <meta property="og:title" content="<3편>Generic이란?" />
+    <meta property="twitter:title" content="<3편>Generic이란?" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="HongDev. - Share Note" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars2.githubusercontent.com/u/17119607?s=460&v=4" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">HongDev.</a></h1>
+            <p class="site-description">Share Note</p>
+          </div>
+
+          <!-- <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+          </nav> -->
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1 class="title"><3편>Generic이란?</h1>
+  <div class="date">
+    Written on February  3, 2019
+  </div>
+
+  <div class="entry">
+    <blockquote>
+  <p>제한(상한, 하한)된 와일드 카드의 개념에 대한 내용이다. 왜 제한된 와일드 카드를 쓰는지 이해하고, 이를 통해 논리적인 오류까지 잡아낼 수 있는 자바의 힘에 대해 느낄 수 있다.</p>
+</blockquote>
+
+<hr />
+
+<p>와일드 카드를 제한하는 방법은 크게 두 가지가 있다. 상한 제한(Upper-Bounded)과 하한 제한(Lower-Bounded)이다. 그 내용에 대해서 확실하게 이해하는게 목표이다. 참고로 제네렉은 제한하는 방법이 ‘extends’ 하나 이고, 와일드 카드는 제한하는 방법이 ‘extends’와 ‘super’이다.</p>
+
+<h5 id="wildcard의-상한-제한upper-bounded">wildcard의 상한 제한(Upper-Bounded)</h5>
+<hr class="post" />
+
+<script src="https://gist.github.com/vvshinevv/ab0e78110dff6f52dc4987ff873a24a6.js"></script>
+
+<p>위 메소드의 파라미터를 보면, 이렇게 설명할 수 있을 것 같다. box는 Box 타입의 인스턴스의 참조 값을 전달받는 매개변수이다. 그런데 제네릭 타입이 와일드 카드이므로 어떠한 타입이 오든 상관은 없다. 다만, extends 라는 예약어를 통해 <strong>제한</strong>을 걸었다. <strong>Number 이거나 Number를 상속하는 클래스만 와라!</strong> 상한 제한을 한 것이다. 왜냐하면 Number 클래스 위에 있는 Object 클래스는 올 수 없기 때문이다. <br /><br /></p>
+
+<h5 id="wildcard의-하한-제한lower-bounded">wildcard의 하한 제한(Lower-Bounded)</h5>
+<hr class="post" />
+
+<script src="https://gist.github.com/vvshinevv/17625bc2d4c6b4d6518bae20039602f5.js"></script>
+
+<p>(위 설명과 비슷한 구조로 비교해 보겠음)위 메소드의 파라미터를 보면, 이렇게 설명할 수 있을 것 같다. box는 Box 타입의 인스턴스의 참조 값을 전달받는 매개변수이다. 그런데 제네릭 타입이 와일드 카드이므로 어떠한 타입이 오든 상관은 없다. 다만, super 라는 예약어를 통해 <strong>하한</strong>을 걸었다. <strong>Number 이거나 Number가 상속하는 클래스만 와라!</strong> 하한 제한을 한 것이다. 왜하면 Number 클래스 아래 있는 Integer 클래스는 올 수 없기 때문이다.<br /><br /></p>
+
+<p><img src="/images/2019-02-03/bounded.png" alt="_config.yml" /><br /><br /><br /><br /></p>
+
+<h5 id="wildcard를-제한하는-이유를-알기-위한-도입부">wildcard를 제한하는 이유를 알기 위한 도입부</h5>
+<hr class="post" />
+
+<p>현업에 있다보면 수 많은 ctrl + c/v 기법으로 컴파일 에러는 발견되지 않는데 논리적인 오류를 야기하는 예기치 못한 버그들이 발견되곤 한다. 아래 코드를 보자.
+<script src="https://gist.github.com/vvshinevv/e06f72e0c78e9a7c94712c8aa0578834.js"></script>
+주석을 달아 BoxHanlder 클래스에 주석을 달아 놓았 듯이 박스에 Toy를 꺼내고 넣는 단순한 작업이 있는 클래스이다. 그런데 만약 밤을 샌 개발자가 복붙을 잘못하여 아래 코드와 같이 outBox 메소드에 “box.set()”을 inBox 메소드에 “box.get()”으로 논리적인 오류를 범했다면 어떨까?<br /><br /><br />
+<script src="https://gist.github.com/vvshinevv/41e2fcc6b234ebef7314e99ac8ad1bf9.js"></script>
+분명 outBox 메소드에 set을 하는 것은 논리적인 오류이고 넣는 inBox 메소드에 get을 하는 것은 <strong>논리적인 오류</strong>이다. 하지만 좋은 프로그래밍 언어는 <strong>개발자의 의도에서 벗어난 것에 대해서 컴파일 오류를 발생시켜주는 것</strong>이 좋은 언어이다. 그러한 문법적 장치가 있는 것은 좋은 언어의 조건 중 하나이다. 그럼 위 예시에서 어떻게 컴파일 오류를 낼 수 있을까? 지금부터 그 장치에 대해 이해해 보도록 하자. (뜬금 없겠지만, <strong>wildcard의 제한이 문법적 장치이</strong>다.
+<br /><br /></p>
+
+<h5 id="wildcard의-상한-제한의-목적">wildcard의 상한 제한의 목적!</h5>
+<hr class="post" />
+
+<p>기본적으로 ‘extends’ 예약어는 위에서 설명한 바와 같이 <strong>상한 제한</strong>(Number 클래스를 상속받은 애들만 와!)의 목적이 있다. 그런데 그것 외에도 전혀 예측하지 못한 이유로도 상한 제한을 하는 경우가 있다. 아래 예시를 보자.<br /><br />
+<script src="https://gist.github.com/vvshinevv/1399660e7d244d1f69ff578e3c1779d5.js"></script>
+<strong>상한 제한(‘extends Toy’)</strong>을 추가한 순간 <u>box 인스턴스에서 꺼내는 것은 가능하고 box 인스턴스에 넣는 것을 불가능하다.</u> 위 코드를 돌려보면 box.set(new Toy())에서 컴파일 에러가 발생하는 것을 알 수 있다. 그냥 상한 제한 하나만 추가한 건데 왜 box 인스턴스에 set을 하는 것에 컴파일 에러가 발생하는 것일까? 왜 그런걸까?<br /><br /></p>
+
+<p>outBox 메소드의 파라미터를 보도록 하자. ‘Box&lt;? extends Toy&gt;’ 는 Toy 클래스이거나 Toy를 상속받는 Car 클래스와 Robot 클래스가 올 수 있다. 즉, Box&lt;Toy&gt;, Box&lt;Car&gt;, Box&lt;Robot&gt; 인스턴스가 매개변수로 전달될 수 있다. 컴파일러는 상속 구조를 전부 기록하고 있지 않다. Car가 Toy를 상속받고 있고 Robot이 Toy를 상속받고 있다는 것을 어디 메모리에 저장해두고 있지 않다는 것이다. 이런 상황에서 컴파일러는 걱정한다. <strong>new Toy()를 매개변수를 set 메소드를 호출하려고 하는데 Box&lt;Car&gt; 인스턴스나 Box&lt;Robot&gt; 인스턴스가 오면 어떡하지?</strong> <br /><br /></p>
+
+<p>위 문장을 보고 이해가 안될 수 있다. 좀 더 세세하게 집고 넘어가면 만약 outBox 메소드에 Box&lt;Car&gt; 타입의 인스턴스가 왔다고 하자. 그럼 아래와 같이 Class Box&lt;T&gt; 타입에서 T는 Car 클래스로 바뀔 것 이다.
+<script src="https://gist.github.com/vvshinevv/439bad22c65bd73605a0d8d02fed3844.js"></script></p>
+
+<p>그럼 위와 같이 생성된 인스턴스에서 ‘box.set(new Toy())’ 를 할 수 있을까? Car는 Toy를 상속받는 클래스이기 때문에 Car를 인자로 전달받을 수 있도록 생성된 메소드에 부모 클래스를 인스턴스를 인자로 전달할 수 없다. 이로인해 컴파일 에러가 발생하는 것이다. 이 문장으로 이해가 되었을 것 같다.(안됐다면 상속 공부를…)<br /><br />
+그렇다며 최상위 부모인 Box&lt;Toy&gt; 인스턴스가 온다면 어떨까? 아쉽게도 컴파일 에러를 발생한다. 위에서도 말했지만 컴파일러는 메모리 공간에 상속구조 관계를 하나하나 저장해두지 않는다. 즉 Toy가 최상위 부모인지 알 수 없다는 것이다.<br /></p>
+
+<p>정리를 하자면, Box&lt;? extends Toy&gt; box 가 보인다면, 인자로 전달되는 <u>box 매개변수</u>를 대상으로 <strong>넣는 것이 불가능하다! 꺼내는 것만 돼!</strong> 라고 외우자!
+<br /><br /></p>
+
+<h5 id="wildcard의-하한-제한의-목적">wildcard의 하한 제한의 목적!</h5>
+<hr class="post" />
+
+<p>상한 제한에서 이야기한 것과 마찬가지로 <strong>하한 제한</strong>(Number 클래스가 상속하는 애들만 와!)의 목적이 있다. 하지만 이것 이외에도 다른 이유로 하한 제한을 하는 경우가 있다. 아래 예시를 보자.<br /><br />
+<script src="https://gist.github.com/vvshinevv/439150ef4a4884f3746f67c2a90bd5df.js"></script>
+<strong>하한 제한(‘super Toy’)</strong>을 추가하는 순간 <u>box 인스턴스에 넣는 것은 가능하고 box 인스턴스에 꺼내는 것은 불가능하다.</u> 위 코드를 돌려보면 box.get()을 하여서 t 변수에 넣어주려는 행위를 할 때 컴파일 오류가 발생한다. 결론은 상한 제한과 마찬가지로 상속과 관련된 이유 때문에 컴파일 오류가 발생한다.<br /><br /></p>
+
+<p>inBox 메소드의 파라미터를 보도록 하자. ‘Box&lt;? super Toy&gt;’ 는 Toy 클래스이거나 Toy가 상속하는 Plastic 클래스가 올 수 있다. 즉, Box&lt;Toy
+&gt;, Box&lt;Plastic&gt;, Box&lt;Object&gt; 올 수 있다. 이런 상황에서 컴파일러는 걱정한다. <strong>Toy t 매개변수에 box.get() 메서드를 호출하여 넣어주려는데 Box&lt;Plastic&gt; 인스턴스나 Box&lt;Objecct&gt;가 오면 어떡하지?</strong> <br /><br /></p>
+
+<p>마찬가지로 위 문장을 보고 이해가 안될 수 있다. 좀 더 세세하게 집고 넘어가면 만약 inBox 메소드에 Box&lt;Plastic&gt; 타입의 인스턴스가 왔다고 하자. 그럼 아래와 같이 Class Box&lt;T&gt; 타입에서 T는 Plastic 클래스로 바뀔 것 이다.
+<script src="https://gist.github.com/vvshinevv/1710d835a31a5c2e520a6ade97a753ca.js"></script></p>
+
+<p>그럼 위와 같이 생성된 인스턴스에서 ‘Toy t = box.get()’ 문장을 실행할 수 있을까? Toy의 부모 클래스가 Plastic이기 때문에 box.get()을 하여 Plastic으로 나올 경우 Toy클래스에 초기화해줄 수 없다.<br /></p>
+
+<p>정리를 하자면, Box&lt;? super Toy&gt; box 가 보인다면, 인자로 전달되는 <u>box 매개변수</u>를 대상으로 <strong>꺼내는 것이 불가능하다! 넣는 것만 돼!</strong> 라고 외우자!</p>
+
+<h5 id="wildcard-상한-하한-제한-제대로-이해했니">wildcard 상한, 하한 제한 제대로 이해했니?</h5>
+<hr class="post" />
+
+<p>위 내용을 바탕으로 아래 코드를 봐보자.
+<script src="https://gist.github.com/vvshinevv/a3fa2e5ad0000149a586524ba3baf22e.js"></script>
+위 코드에서 1)번과 2)번 어떤 것이 맞을까? super과 extends의 성격을 이해했다면 1)번이 정답인 것을 알 수 있다. 다시 한번 말하지만 <strong>extends는 꺼내는 것만 되고 super는 넣는 것만 된다.</strong><br /><br /><br /></p>
+
+<p>이펙티브 자바를 하다가 내용이 너무 산으로 간 것 같은데 위 내용을 정확하게 숙지해야 이펙티브 자바에 나오는 “[ITEM 31] 한정적 와일드카드를 이용해 API 유연성을 높여라” 를 이해할 수 있다. 내용이 길어진 것 같아서 다음 포스팅으로 이어가자. 아마 다음 포스팅은 제네릭과 와일드 카드가 합쳐졌을때 갖는 확장성에 대해서 포스팅을 할 예정이다.<br /><br /></p>
+
+  </div>
+  
+<div class="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+
+	    var disqus_shortname = 'vvshinevv-github-io';
+
+	    (function() {
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+
+	</script>
+	<!-- <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> -->
+</div>
+
+</article>
+
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/vvshinevv"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

@@ -105,7 +105,7 @@ General Method와 Generic Method가 있다. 이 둘의 차이점은 무엇일까
 <br /><br />
 결론은 <strong>아니다!</strong>
 <br /><br />
- <strong><a href="https://vvshinevv.github.io/Generic1/">이전 포스팅</a>과 관련이 있는 내용이 여기서 나온다.</strong> 바로 상속의 개념이 들어가는데, 위 메소드를 호출하는 쪽에서 Box&lt;String&gt; 혹은 Box&lt;Integer&gt;를 넘기고 싶다. 이때 2번 제네릭 메소드에 넘겨야 정상적으로 컴파일이 된다. <strong>Box&lt;Object&gt;와 Box&lt;String&gt;은 전혀 다른 파라미터화 타입이며, Box&lt;Object&gt;와 Box&lt;Integer&gt;는 전혀 다른 파라미터화 타입이기 때문이다.</strong>
+ <strong><a href="https://vvshinevv.github.io/Generic1/">이전 포스팅</a>과 관련이 있는 내용이 여기서 나온다.</strong> 바로 상속의 개념이 들어가는데, 위 메소드를 호출하는 쪽에서 Box&lt;String&gt; 혹은 Box&lt;Integer&gt;를 넘기고 싶다. 이때 2번 제네릭 메소드에 넘겨야 정상적으로 컴파일이 된다. Box&lt;Object&gt;와 Box&lt;String&gt;은 전혀 다른 파라미터화 타입이며, Box&lt;Object&gt;와 Box&lt;Integer&gt;는 전혀 다른 파라미터화 타입이기 때문이다. 즉, Box&lt;Object&gt;와 Box&lt;String&gt; 간의 <strong>상속관계가 성립하지 않는 것</strong>이고, Box&lt;Object&gt;와 Box&lt;Integer&gt; 간의 <strong>상속관계가 성립하지 않는 것</strong>이다.
 <br /><br />
 <script src="https://gist.github.com/vvshinevv/f32043fdcadd4614c0953347f6d85053.js"></script>
 그렇다면 Box&lt;?&gt;인 경우에는 어떨까? 당연히 제네릭 메소드처러 Box&lt;Stirng&gt;와 Box&lt;Integer&gt; 파라미터화 타입을 넘길 수 있다. 그럼 기능이 똑같은데 자바는 왜 이렇게 두 가지를 나눠서 놓은 것일까? 자세한 메커니즘은 조금 더 공부를 해야겠지만 ‘토비’님의 권위에 기대어 차이점을 말하고자 한다.<br />
@@ -113,7 +113,7 @@ General Method와 Generic Method가 있다. 이 둘의 차이점은 무엇일까
 <strong>제네릭</strong> : 지금은 이 타입을 모르지만, 이 타입이 정해지면 그 타입 특성에 맞게 사용하겠다!<br />
 <strong>와일드 카드</strong> : 지금도 이 타입을 모르고, 앞으로도 모를 것이다!<br />
 <script src="https://gist.github.com/vvshinevv/1c4b9f75d79de25ab8cc77278e2b9b19.js"></script>
-기능면에서는 완전히 똑같기 때문에 이왕이면 보기에 조금 더 간결한 와일드 카드를 사용하도록 하자. 메소드의 정의가 복잡할 수록 보기 어려운 법이니까. 사실, 위 차이점 이외에도 와일드 카드의 용도는 더 있다. 제네릭과 합쳤을 때 와일드 카드의 존재는 빛을 본다. 이 부분은 <strong>제한된 와일드 카드</strong>에 대해서 알아 본 뒤에 다시 알아보자. 내용이 조금 길어진 것 같아 다음 포스팅으로 이어서 보자.
+기능면에서는 완전히 똑같기 때문에 이왕이면 보기에 조금 더 간결한 와일드 카드를 사용하도록 하자. 메소드의 정의가 복잡할 수록 보기 어려운 법이니까. 사실, 위 차이점 이외에도 와일드 카드의 용도는 더 있다. 제네릭과 합쳤을 때 와일드 카드의 존재는 빛을 본다. 이 부분은 <strong>제한된 와일드 카드</strong>에 대해서 알아 본 뒤에 다시 알아보자. 내용이 조금 길어진 것 같아 <a href="https://vvshinevv.github.io/Generic3/">다음 포스팅</a>으로 이어서 보자.
 <br /><br /></p>
 
 

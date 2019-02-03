@@ -1,4 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-02-02T18:56:03+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">HongDev.</title><subtitle>Share Note</subtitle><entry><title type="html">&amp;lt;2편&amp;gt;Generic이란?</title><link href="http://localhost:4000/Generic2/" rel="alternate" type="text/html" title="&lt;2편&gt;Generic이란?" /><published>2019-01-19T00:00:00+09:00</published><updated>2019-01-19T00:00:00+09:00</updated><id>http://localhost:4000/Generic2</id><content type="html" xml:base="http://localhost:4000/Generic2/">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-02-03T16:12:46+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">HongDev.</title><subtitle>Share Note</subtitle><entry><title type="html">&amp;lt;3편&amp;gt;Generic이란?</title><link href="http://localhost:4000/Generic3/" rel="alternate" type="text/html" title="&lt;3편&gt;Generic이란?" /><published>2019-02-03T00:00:00+09:00</published><updated>2019-02-03T00:00:00+09:00</updated><id>http://localhost:4000/Generic3</id><content type="html" xml:base="http://localhost:4000/Generic3/">&lt;blockquote&gt;
+  &lt;p&gt;제한(상한, 하한)된 와일드 카드의 개념에 대한 내용이다. 왜 제한된 와일드 카드를 쓰는지 이해하고, 이를 통해 논리적인 오류까지 잡아낼 수 있는 자바의 힘에 대해 느낄 수 있다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;와일드 카드를 제한하는 방법은 크게 두 가지가 있다. 상한 제한(Upper-Bounded)과 하한 제한(Lower-Bounded)이다. 그 내용에 대해서 확실하게 이해하는게 목표이다. 참고로 제네렉은 제한하는 방법이 ‘extends’ 하나 이고, 와일드 카드는 제한하는 방법이 ‘extends’와 ‘super’이다.&lt;/p&gt;
+
+&lt;h5 id=&quot;wildcard의-상한-제한upper-bounded&quot;&gt;wildcard의 상한 제한(Upper-Bounded)&lt;/h5&gt;
+&lt;hr class=&quot;post&quot; /&gt;
+
+&lt;script src=&quot;https://gist.github.com/vvshinevv/ab0e78110dff6f52dc4987ff873a24a6.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;위 메소드의 파라미터를 보면, 이렇게 설명할 수 있을 것 같다. box는 Box 타입의 인스턴스의 참조 값을 전달받는 매개변수이다. 그런데 제네릭 타입이 와일드 카드이므로 어떠한 타입이 오든 상관은 없다. 다만, extends 라는 예약어를 통해 &lt;strong&gt;제한&lt;/strong&gt;을 걸었다. &lt;strong&gt;Number 이거나 Number를 상속하는 클래스만 와라!&lt;/strong&gt; 상한 제한을 한 것이다. 왜냐하면 Number 클래스 위에 있는 Object 클래스는 올 수 없기 때문이다. &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;wildcard의-하한-제한lower-bounded&quot;&gt;wildcard의 하한 제한(Lower-Bounded)&lt;/h5&gt;
+&lt;hr class=&quot;post&quot; /&gt;
+
+&lt;script src=&quot;https://gist.github.com/vvshinevv/17625bc2d4c6b4d6518bae20039602f5.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;(위 설명과 비슷한 구조로 비교해 보겠음)위 메소드의 파라미터를 보면, 이렇게 설명할 수 있을 것 같다. box는 Box 타입의 인스턴스의 참조 값을 전달받는 매개변수이다. 그런데 제네릭 타입이 와일드 카드이므로 어떠한 타입이 오든 상관은 없다. 다만, super 라는 예약어를 통해 &lt;strong&gt;하한&lt;/strong&gt;을 걸었다. &lt;strong&gt;Number 이거나 Number가 상속하는 클래스만 와라!&lt;/strong&gt; 하한 제한을 한 것이다. 왜하면 Number 클래스 아래 있는 Integer 클래스는 올 수 없기 때문이다.&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2019-02-03/bounded.png&quot; alt=&quot;_config.yml&quot; /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;wildcard를-제한하는-이유를-알기-위한-도입부&quot;&gt;wildcard를 제한하는 이유를 알기 위한 도입부&lt;/h5&gt;
+&lt;hr class=&quot;post&quot; /&gt;
+
+&lt;p&gt;현업에 있다보면 수 많은 ctrl + c/v 기법으로 컴파일 에러는 발견되지 않는데 논리적인 오류를 야기하는 예기치 못한 버그들이 발견되곤 한다. 아래 코드를 보자.
+&lt;script src=&quot;https://gist.github.com/vvshinevv/e06f72e0c78e9a7c94712c8aa0578834.js&quot;&gt;&lt;/script&gt;
+주석을 달아 BoxHanlder 클래스에 주석을 달아 놓았 듯이 박스에 Toy를 꺼내고 넣는 단순한 작업이 있는 클래스이다. 그런데 만약 밤을 샌 개발자가 복붙을 잘못하여 아래 코드와 같이 outBox 메소드에 “box.set()”을 inBox 메소드에 “box.get()”으로 논리적인 오류를 범했다면 어떨까?&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;
+&lt;script src=&quot;https://gist.github.com/vvshinevv/41e2fcc6b234ebef7314e99ac8ad1bf9.js&quot;&gt;&lt;/script&gt;
+분명 outBox 메소드에 set을 하는 것은 논리적인 오류이고 넣는 inBox 메소드에 get을 하는 것은 &lt;strong&gt;논리적인 오류&lt;/strong&gt;이다. 하지만 좋은 프로그래밍 언어는 &lt;strong&gt;개발자의 의도에서 벗어난 것에 대해서 컴파일 오류를 발생시켜주는 것&lt;/strong&gt;이 좋은 언어이다. 그러한 문법적 장치가 있는 것은 좋은 언어의 조건 중 하나이다. 그럼 위 예시에서 어떻게 컴파일 오류를 낼 수 있을까? 지금부터 그 장치에 대해 이해해 보도록 하자. (뜬금 없겠지만, &lt;strong&gt;wildcard의 제한이 문법적 장치이&lt;/strong&gt;다.
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;wildcard의-상한-제한의-목적&quot;&gt;wildcard의 상한 제한의 목적!&lt;/h5&gt;
+&lt;hr class=&quot;post&quot; /&gt;
+
+&lt;p&gt;기본적으로 ‘extends’ 예약어는 위에서 설명한 바와 같이 &lt;strong&gt;상한 제한&lt;/strong&gt;(Number 클래스를 상속받은 애들만 와!)의 목적이 있다. 그런데 그것 외에도 전혀 예측하지 못한 이유로도 상한 제한을 하는 경우가 있다. 아래 예시를 보자.&lt;br /&gt;&lt;br /&gt;
+&lt;script src=&quot;https://gist.github.com/vvshinevv/1399660e7d244d1f69ff578e3c1779d5.js&quot;&gt;&lt;/script&gt;
+&lt;strong&gt;상한 제한(‘extends Toy’)&lt;/strong&gt;을 추가한 순간 &lt;u&gt;box 인스턴스에서 꺼내는 것은 가능하고 box 인스턴스에 넣는 것을 불가능하다.&lt;/u&gt; 위 코드를 돌려보면 box.set(new Toy())에서 컴파일 에러가 발생하는 것을 알 수 있다. 그냥 상한 제한 하나만 추가한 건데 왜 box 인스턴스에 set을 하는 것에 컴파일 에러가 발생하는 것일까? 왜 그런걸까?&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;outBox 메소드의 파라미터를 보도록 하자. ‘Box&amp;lt;? extends Toy&amp;gt;’ 는 Toy 클래스이거나 Toy를 상속받는 Car 클래스와 Robot 클래스가 올 수 있다. 즉, Box&amp;lt;Toy&amp;gt;, Box&amp;lt;Car&amp;gt;, Box&amp;lt;Robot&amp;gt; 인스턴스가 매개변수로 전달될 수 있다. 컴파일러는 상속 구조를 전부 기록하고 있지 않다. Car가 Toy를 상속받고 있고 Robot이 Toy를 상속받고 있다는 것을 어디 메모리에 저장해두고 있지 않다는 것이다. 이런 상황에서 컴파일러는 걱정한다. &lt;strong&gt;new Toy()를 매개변수를 set 메소드를 호출하려고 하는데 Box&amp;lt;Car&amp;gt; 인스턴스나 Box&amp;lt;Robot&amp;gt; 인스턴스가 오면 어떡하지?&lt;/strong&gt; &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 문장을 보고 이해가 안될 수 있다. 좀 더 세세하게 집고 넘어가면 만약 outBox 메소드에 Box&amp;lt;Car&amp;gt; 타입의 인스턴스가 왔다고 하자. 그럼 아래와 같이 Class Box&amp;lt;T&amp;gt; 타입에서 T는 Car 클래스로 바뀔 것 이다.
+&lt;script src=&quot;https://gist.github.com/vvshinevv/439bad22c65bd73605a0d8d02fed3844.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;그럼 위와 같이 생성된 인스턴스에서 ‘box.set(new Toy())’ 를 할 수 있을까? Car는 Toy를 상속받는 클래스이기 때문에 Car를 인자로 전달받을 수 있도록 생성된 메소드에 부모 클래스를 인스턴스를 인자로 전달할 수 없다. 이로인해 컴파일 에러가 발생하는 것이다. 이 문장으로 이해가 되었을 것 같다.(안됐다면 상속 공부를…)&lt;br /&gt;&lt;br /&gt;
+그렇다며 최상위 부모인 Box&amp;lt;Toy&amp;gt; 인스턴스가 온다면 어떨까? 아쉽게도 컴파일 에러를 발생한다. 위에서도 말했지만 컴파일러는 메모리 공간에 상속구조 관계를 하나하나 저장해두지 않는다. 즉 Toy가 최상위 부모인지 알 수 없다는 것이다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;정리를 하자면, Box&amp;lt;? extends Toy&amp;gt; box 가 보인다면, 인자로 전달되는 &lt;u&gt;box 매개변수&lt;/u&gt;를 대상으로 &lt;strong&gt;넣는 것이 불가능하다! 꺼내는 것만 돼!&lt;/strong&gt; 라고 외우자!
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;wildcard의-하한-제한의-목적&quot;&gt;wildcard의 하한 제한의 목적!&lt;/h5&gt;
+&lt;hr class=&quot;post&quot; /&gt;
+
+&lt;p&gt;상한 제한에서 이야기한 것과 마찬가지로 &lt;strong&gt;하한 제한&lt;/strong&gt;(Number 클래스가 상속하는 애들만 와!)의 목적이 있다. 하지만 이것 이외에도 다른 이유로 하한 제한을 하는 경우가 있다. 아래 예시를 보자.&lt;br /&gt;&lt;br /&gt;
+&lt;script src=&quot;https://gist.github.com/vvshinevv/439150ef4a4884f3746f67c2a90bd5df.js&quot;&gt;&lt;/script&gt;
+&lt;strong&gt;하한 제한(‘super Toy’)&lt;/strong&gt;을 추가하는 순간 &lt;u&gt;box 인스턴스에 넣는 것은 가능하고 box 인스턴스에 꺼내는 것은 불가능하다.&lt;/u&gt; 위 코드를 돌려보면 box.get()을 하여서 t 변수에 넣어주려는 행위를 할 때 컴파일 오류가 발생한다. 결론은 상한 제한과 마찬가지로 상속과 관련된 이유 때문에 컴파일 오류가 발생한다.&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;inBox 메소드의 파라미터를 보도록 하자. ‘Box&amp;lt;? super Toy&amp;gt;’ 는 Toy 클래스이거나 Toy가 상속하는 Plastic 클래스가 올 수 있다. 즉, Box&amp;lt;Toy
+&amp;gt;, Box&amp;lt;Plastic&amp;gt;, Box&amp;lt;Object&amp;gt; 올 수 있다. 이런 상황에서 컴파일러는 걱정한다. &lt;strong&gt;Toy t 매개변수에 box.get() 메서드를 호출하여 넣어주려는데 Box&amp;lt;Plastic&amp;gt; 인스턴스나 Box&amp;lt;Objecct&amp;gt;가 오면 어떡하지?&lt;/strong&gt; &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;마찬가지로 위 문장을 보고 이해가 안될 수 있다. 좀 더 세세하게 집고 넘어가면 만약 inBox 메소드에 Box&amp;lt;Plastic&amp;gt; 타입의 인스턴스가 왔다고 하자. 그럼 아래와 같이 Class Box&amp;lt;T&amp;gt; 타입에서 T는 Plastic 클래스로 바뀔 것 이다.
+&lt;script src=&quot;https://gist.github.com/vvshinevv/1710d835a31a5c2e520a6ade97a753ca.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;그럼 위와 같이 생성된 인스턴스에서 ‘Toy t = box.get()’ 문장을 실행할 수 있을까? Toy의 부모 클래스가 Plastic이기 때문에 box.get()을 하여 Plastic으로 나올 경우 Toy클래스에 초기화해줄 수 없다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;정리를 하자면, Box&amp;lt;? super Toy&amp;gt; box 가 보인다면, 인자로 전달되는 &lt;u&gt;box 매개변수&lt;/u&gt;를 대상으로 &lt;strong&gt;꺼내는 것이 불가능하다! 넣는 것만 돼!&lt;/strong&gt; 라고 외우자!&lt;/p&gt;
+
+&lt;h5 id=&quot;wildcard-상한-하한-제한-제대로-이해했니&quot;&gt;wildcard 상한, 하한 제한 제대로 이해했니?&lt;/h5&gt;
+&lt;hr class=&quot;post&quot; /&gt;
+
+&lt;p&gt;위 내용을 바탕으로 아래 코드를 봐보자.
+&lt;script src=&quot;https://gist.github.com/vvshinevv/a3fa2e5ad0000149a586524ba3baf22e.js&quot;&gt;&lt;/script&gt;
+위 코드에서 1)번과 2)번 어떤 것이 맞을까? super과 extends의 성격을 이해했다면 1)번이 정답인 것을 알 수 있다. 다시 한번 말하지만 &lt;strong&gt;extends는 꺼내는 것만 되고 super는 넣는 것만 된다.&lt;/strong&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;이펙티브 자바를 하다가 내용이 너무 산으로 간 것 같은데 위 내용을 정확하게 숙지해야 이펙티브 자바에 나오는 “[ITEM 31] 한정적 와일드카드를 이용해 API 유연성을 높여라” 를 이해할 수 있다. 내용이 길어진 것 같아서 다음 포스팅으로 이어가자. 아마 다음 포스팅은 제네릭과 와일드 카드가 합쳐졌을때 갖는 확장성에 대해서 포스팅을 할 예정이다.&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">제한(상한, 하한)된 와일드 카드의 개념에 대한 내용이다. 왜 제한된 와일드 카드를 쓰는지 이해하고, 이를 통해 논리적인 오류까지 잡아낼 수 있는 자바의 힘에 대해 느낄 수 있다.</summary></entry><entry><title type="html">&amp;lt;2편&amp;gt;Generic이란?</title><link href="http://localhost:4000/Generic2/" rel="alternate" type="text/html" title="&lt;2편&gt;Generic이란?" /><published>2019-01-19T00:00:00+09:00</published><updated>2019-01-19T00:00:00+09:00</updated><id>http://localhost:4000/Generic2</id><content type="html" xml:base="http://localhost:4000/Generic2/">&lt;blockquote&gt;
   &lt;p&gt;이번 챕터의 중요한 내용은 제네릭과 와일드 카드의 차이점이다. 이것 저것 많은 내용을 참고해서 정리해보았다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -38,7 +114,7 @@ General Method와 Generic Method가 있다. 이 둘의 차이점은 무엇일까
 &lt;br /&gt;&lt;br /&gt;
 결론은 &lt;strong&gt;아니다!&lt;/strong&gt;
 &lt;br /&gt;&lt;br /&gt;
- &lt;strong&gt;&lt;a href=&quot;https://vvshinevv.github.io/Generic1/&quot;&gt;이전 포스팅&lt;/a&gt;과 관련이 있는 내용이 여기서 나온다.&lt;/strong&gt; 바로 상속의 개념이 들어가는데, 위 메소드를 호출하는 쪽에서 Box&amp;lt;String&amp;gt; 혹은 Box&amp;lt;Integer&amp;gt;를 넘기고 싶다. 이때 2번 제네릭 메소드에 넘겨야 정상적으로 컴파일이 된다. &lt;strong&gt;Box&amp;lt;Object&amp;gt;와 Box&amp;lt;String&amp;gt;은 전혀 다른 파라미터화 타입이며, Box&amp;lt;Object&amp;gt;와 Box&amp;lt;Integer&amp;gt;는 전혀 다른 파라미터화 타입이기 때문이다.&lt;/strong&gt;
+ &lt;strong&gt;&lt;a href=&quot;https://vvshinevv.github.io/Generic1/&quot;&gt;이전 포스팅&lt;/a&gt;과 관련이 있는 내용이 여기서 나온다.&lt;/strong&gt; 바로 상속의 개념이 들어가는데, 위 메소드를 호출하는 쪽에서 Box&amp;lt;String&amp;gt; 혹은 Box&amp;lt;Integer&amp;gt;를 넘기고 싶다. 이때 2번 제네릭 메소드에 넘겨야 정상적으로 컴파일이 된다. Box&amp;lt;Object&amp;gt;와 Box&amp;lt;String&amp;gt;은 전혀 다른 파라미터화 타입이며, Box&amp;lt;Object&amp;gt;와 Box&amp;lt;Integer&amp;gt;는 전혀 다른 파라미터화 타입이기 때문이다. 즉, Box&amp;lt;Object&amp;gt;와 Box&amp;lt;String&amp;gt; 간의 &lt;strong&gt;상속관계가 성립하지 않는 것&lt;/strong&gt;이고, Box&amp;lt;Object&amp;gt;와 Box&amp;lt;Integer&amp;gt; 간의 &lt;strong&gt;상속관계가 성립하지 않는 것&lt;/strong&gt;이다.
 &lt;br /&gt;&lt;br /&gt;
 &lt;script src=&quot;https://gist.github.com/vvshinevv/f32043fdcadd4614c0953347f6d85053.js&quot;&gt;&lt;/script&gt;
 그렇다면 Box&amp;lt;?&amp;gt;인 경우에는 어떨까? 당연히 제네릭 메소드처러 Box&amp;lt;Stirng&amp;gt;와 Box&amp;lt;Integer&amp;gt; 파라미터화 타입을 넘길 수 있다. 그럼 기능이 똑같은데 자바는 왜 이렇게 두 가지를 나눠서 놓은 것일까? 자세한 메커니즘은 조금 더 공부를 해야겠지만 ‘토비’님의 권위에 기대어 차이점을 말하고자 한다.&lt;br /&gt;
@@ -46,7 +122,7 @@ General Method와 Generic Method가 있다. 이 둘의 차이점은 무엇일까
 &lt;strong&gt;제네릭&lt;/strong&gt; : 지금은 이 타입을 모르지만, 이 타입이 정해지면 그 타입 특성에 맞게 사용하겠다!&lt;br /&gt;
 &lt;strong&gt;와일드 카드&lt;/strong&gt; : 지금도 이 타입을 모르고, 앞으로도 모를 것이다!&lt;br /&gt;
 &lt;script src=&quot;https://gist.github.com/vvshinevv/1c4b9f75d79de25ab8cc77278e2b9b19.js&quot;&gt;&lt;/script&gt;
-기능면에서는 완전히 똑같기 때문에 이왕이면 보기에 조금 더 간결한 와일드 카드를 사용하도록 하자. 메소드의 정의가 복잡할 수록 보기 어려운 법이니까. 사실, 위 차이점 이외에도 와일드 카드의 용도는 더 있다. 제네릭과 합쳤을 때 와일드 카드의 존재는 빛을 본다. 이 부분은 &lt;strong&gt;제한된 와일드 카드&lt;/strong&gt;에 대해서 알아 본 뒤에 다시 알아보자. 내용이 조금 길어진 것 같아 다음 포스팅으로 이어서 보자.
+기능면에서는 완전히 똑같기 때문에 이왕이면 보기에 조금 더 간결한 와일드 카드를 사용하도록 하자. 메소드의 정의가 복잡할 수록 보기 어려운 법이니까. 사실, 위 차이점 이외에도 와일드 카드의 용도는 더 있다. 제네릭과 합쳤을 때 와일드 카드의 존재는 빛을 본다. 이 부분은 &lt;strong&gt;제한된 와일드 카드&lt;/strong&gt;에 대해서 알아 본 뒤에 다시 알아보자. 내용이 조금 길어진 것 같아 &lt;a href=&quot;https://vvshinevv.github.io/Generic3/&quot;&gt;다음 포스팅&lt;/a&gt;으로 이어서 보자.
 &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">이번 챕터의 중요한 내용은 제네릭과 와일드 카드의 차이점이다. 이것 저것 많은 내용을 참고해서 정리해보았다.</summary></entry><entry><title type="html">&amp;lt;1편&amp;gt;Generic이란?</title><link href="http://localhost:4000/Generic1/" rel="alternate" type="text/html" title="&lt;1편&gt;Generic이란?" /><published>2019-01-05T00:00:00+09:00</published><updated>2019-01-05T00:00:00+09:00</updated><id>http://localhost:4000/Generic1</id><content type="html" xml:base="http://localhost:4000/Generic1/">&lt;blockquote&gt;
   &lt;p&gt;제네릭을 쓰면서도 맞게 쓰는 건지 몰라서 찝찝한 마음에 업무를 했었는데 사내 이펙티브 자바 스터디 중 발표할 수 있는 기회가 생겨 정리를 해봤다.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -95,4 +171,4 @@ Box 제네릭 클래스와 그 것을 상속 받는 SteelBox 제네릭 클래스
 &lt;script src=&quot;https://gist.github.com/vvshinevv/a56c1dc2c05e0ee468a02b063977d1a1.js&quot;&gt;&lt;/script&gt;
 한번 위 내용을 컴파일 해보면 바로 알 수 있겠지만, 위에서 설명한 두 가지 조건을 잘 생각해 가면서 변수에 초기화가 될 수 있는지 생각해보자. 보기에 런타임 에러인 경우는 위에서 설명한 Raw Type을 겨냥한 것임을 눈치 챘을 것이다. (제네릭은 런타임이 절대 발생할 수 없음!)
 &lt;br /&gt;&lt;br /&gt;
-제네릭을 Collections까지 공부하면서 어떻게 보면 상속은 제네릭의 클래스 혹은 제네릭 메소드를 만들고 구성하는데 있어서 가장 중요한 개념인 것 같다. 앞으로도 상속과 관련해서 제네릭을 설명하는 내용이 많다. 확실하게 이해하고 넘어가는게 좋다. 글이 조금 길어진 것 같으니 다음 포스팅으로 내용을 다시 정리하겠다.&lt;/p&gt;</content><author><name></name></author><summary type="html">제네릭을 쓰면서도 맞게 쓰는 건지 몰라서 찝찝한 마음에 업무를 했었는데 사내 이펙티브 자바 스터디 중 발표할 수 있는 기회가 생겨 정리를 해봤다.</summary></entry></feed>
+제네릭을 Collections까지 공부하면서 어떻게 보면 상속은 제네릭의 클래스 혹은 제네릭 메소드를 만들고 구성하는데 있어서 가장 중요한 개념인 것 같다. 앞으로도 상속과 관련해서 제네릭을 설명하는 내용이 많다. 확실하게 이해하고 넘어가는게 좋다. 글이 조금 길어진 것 같으니 &lt;a href=&quot;https://vvshinevv.github.io/Generic2/&quot;&gt;다음 포스팅&lt;/a&gt;으로 내용을 다시 정리하겠다.&lt;/p&gt;</content><author><name></name></author><summary type="html">제네릭을 쓰면서도 맞게 쓰는 건지 몰라서 찝찝한 마음에 업무를 했었는데 사내 이펙티브 자바 스터디 중 발표할 수 있는 기회가 생겨 정리를 해봤다.</summary></entry></feed>
